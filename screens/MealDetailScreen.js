@@ -1,6 +1,7 @@
 import { useContext, useLayoutEffect } from "react";
 import { Text, View, Image, StyleSheet, ScrollView } from "react-native";
-import { useDispatch, useSelector } from "react-redux"
+import { Video } from "expo-av";
+import { useDispatch, useSelector } from "react-redux";
 import { MEALS } from "../data/dummy-data";
 
 import MealDetails from "../components/MealDetails";
@@ -14,17 +15,18 @@ function MealDetailScreen({ route, navigation }) {
   const favoriteMealsCtx = useContext(FavoritesContext);
 
   const mealId = route.params.mealId;
+  const { imageUrl } = route.params;
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
   const mealIsFavorite = favoriteMealsCtx.ids.includes(mealId);
 
   function changeFavoriteStatusHandler() {
     if (mealIsFavorite) {
-      favoriteMealsCtx.removeFavorite(mealId)
+      favoriteMealsCtx.removeFavorite(mealId);
     } else {
-      favoriteMealsCtx.addFavorite(mealId)
+      favoriteMealsCtx.addFavorite(mealId);
+    }
   }
-}
 
   // const favoriteMealIds = useSelector((state) => state.favoriteMeals.ids)
   // const dispatch = useDispatch()
@@ -59,7 +61,16 @@ function MealDetailScreen({ route, navigation }) {
   return (
     <ScrollView style={styles.rootContainer}>
       <View style={styles.container}>
-        <Image style={styles.image} source={{ uri: selectedMeal.imageUrl }} />
+        <View style={styles.videoContainer}>
+          <Video
+            source={{
+              uri: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+            }}
+            useNativeControls
+            resizeMode="cover"
+            style={{  width: 360, height: 300 }}
+          />
+        </View>
         <Text style={styles.title}>{selectedMeal.title}</Text>
         <MealDetails
           duration={selectedMeal.duration}
@@ -125,4 +136,5 @@ const styles = StyleSheet.create({
     color: "#351401",
     textAlign: "center",
   },
+  
 });
