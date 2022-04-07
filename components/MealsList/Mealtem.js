@@ -18,8 +18,6 @@ function MealItem({
   duration,
   complexity,
   affordability,
-  style,
-  textStyle,
 }) {
   const navigation = useNavigation();
 
@@ -39,13 +37,15 @@ function MealItem({
         <View style={styles.innerContainer}>
           <View>
             <Image style={styles.image} source={{ uri: imageUrl }} />
-            <Text style={styles.title}>{title}</Text>
           </View>
-          <MealDetails
-            duration={duration}
-            complexity={complexity}
-            affordability={affordability}
-          />
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>{title}</Text>
+            <MealDetails
+              duration={duration}
+              complexity={complexity}
+              affordability={affordability}
+            />
+          </View>
         </View>
       </Pressable>
     </View>
@@ -58,14 +58,15 @@ const styles = StyleSheet.create({
   mealItem: {
     margin: 16,
     borderRadius: 8,
-    backgroundColor: "white",
+    backgroundColor: "#a281f0",
     elevation: 4,
-    backgroundColor: "white",
     shadowColor: "black",
     shadowOpacity: 0.25,
     shadowOffset: { width: 0, height: 0 },
     shadowRadius: 8,
     overflow: Platform.OS === "android" ? "hidden" : "visible",
+    borderWidth: 2,
+    borderColor: "white",
   },
   innerContainer: {
     borderRadius: 8,
@@ -78,10 +79,16 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 200,
   },
+  titleContainer: {
+   borderTopColor: "white",
+   borderTopWidth: 2,
+  },
   title: {
     fontWeight: "bold",
     textAlign: "center",
-    fontSize: 18,
+    fontSize: 24,
     margin: 8,
+    color: "white",
   },
+
 });

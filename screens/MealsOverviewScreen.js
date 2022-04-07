@@ -14,10 +14,10 @@ function MealsOverviewScreen({ route, navigation }) {
   useLayoutEffect(() => {
     const categoryTitle = CATEGORIES.find(
       (category) => category.id === catId
-    ).breed;
+    ).title;
 
     navigation.setOptions({
-      breed: categoryTitle,
+      title: categoryTitle,
     });
   }, [catId, navigation]);
 

@@ -50,7 +50,7 @@ function MealDetailScreen({ route, navigation }) {
             }}
             useNativeControls
             resizeMode="cover"
-            style={{  width: 360, height: 300 }}
+            style={{  width: 390, height: 300 }}
           />
         </View>
         <Text style={styles.title}>{selectedMeal.title}</Text>
@@ -74,7 +74,7 @@ function MealDetailScreen({ route, navigation }) {
         {selectedMeal.steps.map((step) => {
           return (
             <View style={styles.listItem} key={step}>
-              <Text style={styles.itemText}>{step}</Text>
+              <Text style={styles.itemText}> {step}</Text>
             </View>
           );
         })}
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
-    fontSize: 24,
+    fontSize: 30,
     margin: 8,
     textAlign: "center",
     color: "white",
@@ -107,12 +107,12 @@ const styles = StyleSheet.create({
     color: "white",
   },
   listItem: {
-    borderRadius: 6,
+    borderRadius: 3,
     paddingHorizontal: 8,
     paddingVertical: 4,
     marginVertical: 4,
     marginHorizontal: 24,
-    backgroundColor: "#e2b497",
+    backgroundColor: "#c6affc",
   },
   itemText: {
     color: "#351401",
@@ -120,3 +120,4 @@ const styles = StyleSheet.create({
   },
   
 });
+

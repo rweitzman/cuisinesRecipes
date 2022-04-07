@@ -35,6 +35,8 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 0 },
     shadowRadius: 8,
     overflow: Platform.OS === "android" ? "hidden" : "visible",
+    borderWidth: 2, 
+    borderColor: "white", 
   },
   button: {
     flex: 1,
@@ -51,6 +53,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 20,
+    color: "white", 
+    textAlign: "center"
   },
 });
