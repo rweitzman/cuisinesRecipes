@@ -1,13 +1,11 @@
 import { useContext, useLayoutEffect } from "react";
 import { Text, View, Image, StyleSheet, ScrollView } from "react-native";
 import { Video } from "expo-av";
-import { useDispatch, useSelector } from "react-redux";
 import { MEALS } from "../data/dummy-data";
 
 import MealDetails from "../components/MealDetails";
 import Subtitle from "../components/MealDetail/Subtitle";
 import IconButton from "../components/IconButton";
-import { addFavorite, removeFavorite } from "../store/redux/favorites";
 
 import { FavoritesContext } from "../store/context/favorites-context";
 
@@ -27,22 +25,6 @@ function MealDetailScreen({ route, navigation }) {
       favoriteMealsCtx.addFavorite(mealId);
     }
   }
-
-  // const favoriteMealIds = useSelector((state) => state.favoriteMeals.ids)
-  // const dispatch = useDispatch()
-
-  // const mealId = route.params.mealId;
-  // const selectedMeal = MEALS.find((meal) => meal.id === mealId);
-
-  // const mealIsFavorite = favoriteMealIds.ids.includes(mealId);
-
-  // function changeFavoriteStatusHandler() {
-  //   if (mealIsFavorite) {
-  //     dispatch(removeFavorite({ id: mealId }))
-  //   } else {
-  //     dispatch(addFavorite({ id: mealId }))
-  //   }
-  // }
 
   useLayoutEffect(() => {
     navigation.setOptions({
